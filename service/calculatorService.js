@@ -34,6 +34,9 @@ app.get("/multiply", (req, res) => {
 
 app.get("/divide", (req, res) => {
   const { number1, number2 } = req.query;
+  if(number2 === "0") {
+    return res.send("Belirsiz");
+  }
   const result = parseFloat(number1) / parseFloat(number2);
   console.log("Divide operatörüne istek geldi.");
   res.send(result.toString());
