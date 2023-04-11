@@ -1,4 +1,3 @@
-// Require Express module
 const express = require("express");
 const bodyparser = require('body-parser')
 const cors = require('cors');
@@ -10,7 +9,6 @@ app.use(bodyparser.json({
   strict:false
 }))
 
-// Add routes for each operation
 app.get("/add", (req, res) => {
   const { number1, number2 } = req.query;
   const result = parseFloat(number1) + parseFloat(number2);
@@ -35,14 +33,13 @@ app.get("/multiply", (req, res) => {
 app.get("/divide", (req, res) => {
   const { number1, number2 } = req.query;
   if(number2 === "0") {
-    return res.send("Belirsiz");
+    return res.send("Tanımsız");
   }
   const result = parseFloat(number1) / parseFloat(number2);
   console.log("Divide operatörüne istek geldi.");
   res.send(result.toString());
 });
 
-// Start server
 app.listen(5000, () => {
   console.log("Servis 5000 portu ile çalışıyor...");
 });
